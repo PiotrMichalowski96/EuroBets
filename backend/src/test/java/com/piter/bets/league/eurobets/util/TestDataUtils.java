@@ -2,7 +2,6 @@ package com.piter.bets.league.eurobets.util;
 
 import com.piter.bets.league.eurobets.dto.BetDTO;
 import com.piter.bets.league.eurobets.dto.MatchDTO;
-import com.piter.bets.league.eurobets.dto.UserDTO;
 import com.piter.bets.league.eurobets.entity.Bet;
 import com.piter.bets.league.eurobets.entity.BetResults;
 import com.piter.bets.league.eurobets.entity.Match;

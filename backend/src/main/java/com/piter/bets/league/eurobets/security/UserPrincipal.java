@@ -2,11 +2,9 @@ package com.piter.bets.league.eurobets.security;
 
 import com.piter.bets.league.eurobets.entity.User;
 import java.util.Collection;
-import java.util.Collections;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Getter

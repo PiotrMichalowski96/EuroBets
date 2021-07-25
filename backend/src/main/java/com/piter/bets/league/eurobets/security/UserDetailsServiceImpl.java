@@ -1,7 +1,6 @@
 package com.piter.bets.league.eurobets.security;
 
 import com.piter.bets.league.eurobets.repository.UserRepository;
-import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
