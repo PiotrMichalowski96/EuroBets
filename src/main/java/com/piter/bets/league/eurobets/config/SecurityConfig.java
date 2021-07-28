@@ -42,36 +42,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
 
   @Override
   protected void configure(final HttpSecurity http) throws Exception {
-    http.cors(Customizer.withDefaults())
-        .formLogin()
-          .successHandler(authSuccessHandler)
-          .failureHandler(authFailureHandler)
-          .permitAll()
+    http
+        .csrf().disable()
+        .cors().disable()
+        .headers().frameOptions().disable()
         .and()
-          .logout()
-            .logoutSuccessHandler(logoutSuccessHandler)
-            .logoutSuccessUrl("/")
-        .and()
-          .exceptionHandling()
-          .authenticationEntryPoint(authenticationEntryPoint)
-        .and()
-          .authorizeRequests()
-            .antMatchers(HttpMethod.GET, "/swagger-ui.html").permitAll()
-            .antMatchers(HttpMethod.GET, "/users").hasAnyAuthority("USER", "ADMIN")
-            .antMatchers(HttpMethod.GET, "/users/*").hasAnyAuthority("USER", "ADMIN")
-            .antMatchers(HttpMethod.GET, "/matches").hasAnyAuthority("USER", "ADMIN")
-            .antMatchers(HttpMethod.GET, "/matches/*").hasAnyAuthority("USER", "ADMIN")
-            .antMatchers(HttpMethod.POST, "/matches").hasAnyAuthority("ADMIN")
-            .antMatchers(HttpMethod.DELETE, "/matches/*").hasAnyAuthority("ADMIN")
-            .antMatchers(HttpMethod.GET, "/bets").hasAnyAuthority("USER", "ADMIN")
-            .antMatchers(HttpMethod.GET, "/bets/*").hasAnyAuthority("USER", "ADMIN")
-            .antMatchers(HttpMethod.GET, "/bets/user/*").hasAnyAuthority("USER", "ADMIN")
-            .antMatchers(HttpMethod.POST, "/bets/match/*").hasAnyAuthority("USER", "ADMIN")
-            .antMatchers(HttpMethod.DELETE, "/bets/*").hasAnyAuthority("USER", "ADMIN")
-        .and()
-          .csrf()
-          .ignoringAntMatchers("/login", "/logout")
-          .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+        .authorizeRequests()
+        .anyRequest().permitAll();
   }
 
   @Override
